@@ -1,0 +1,15 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts"
+    "init": "deno install --global --allow-net --allow-env --name tristan ./main.ts"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/cli": "jsr:@std/cli@^1.0.6",
+    "chalk": "npm:chalk@^5.3.0",
+    "commander": "npm:commander@^12.1.0",
+    "figlet": "npm:figlet@^1.8.0",
+    "inquirer": "npm:inquirer@^12.0.0",
+    "openai": "npm:openai@^4.68.1"
+  }
+}
