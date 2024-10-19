@@ -24,7 +24,7 @@ Clone the repo and use the following commands to get it working.
 deno run -A main.ts --help
 ```
 
-To build an executable:
+To install the `tristan` cli:
 
 ```bash
 deno run init
