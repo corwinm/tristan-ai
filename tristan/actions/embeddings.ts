@@ -134,7 +134,7 @@ function dataSetExists() {
 async function obtainDataSet(openai: OpenAI) {
   const hasDataSet = dataSetExists();
   if (hasDataSet) {
-    console.log("Existing data set with embeddings found.");
+    console.log(chalk.green("Existing data set with embeddings found."));
     const regenerateEmbeddings = confirm(
       "Do you want to regenerate the embeddings?",
     );
