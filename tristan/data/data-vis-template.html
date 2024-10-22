@@ -1,0 +1,49 @@
+<!doctype html>
+<div id="myplot"></div>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+<script type="module">
+  const vis_dims = %DATA%;
+  const scores = %SCORES%;
+
+  const colors = ["red", "darkorange", "gold", "turquoise", "darkgreen"];
+  const scatterData = vis_dims.map(([x, y], index) => ({
+    x: x,
+    y: y,
+    color: colors[scores[index] - 1],
+    alpha: 0.3,
+  }));
+
+  const avgPoints = colors
+    .map((color, score) => {
+      const filteredPoints = vis_dims.filter((_, i) => scores[i] - 1 === score);
+      const avg_x =
+        filteredPoints.reduce((sum, [x, _]) => sum + x, 0) /
+        filteredPoints.length;
+      const avg_y =
+        filteredPoints.reduce((sum, [_, y]) => sum + y, 0) /
+        filteredPoints.length;
+      return { x: avg_x, y: avg_y, color: color, size: 100 };
+    })
+    .filter((point) => !isNaN(point.x) && !isNaN(point.y)); // Filter out NaN values
+
+  const plot = Plot.plot({
+    marks: [
+      Plot.dot(scatterData, { x: "x", y: "y", fill: "color", opacity: 0.3 }),
+      Plot.dot(avgPoints, { x: "x", y: "y", fill: "color", r: 5, symbol: "x" }), // Adjust size as necessary
+    ],
+    color: {
+      legend: true,
+      domain: colors,
+      range: colors,
+    },
+    title: "Amazon ratings visualized in language using t-SNE",
+  });
+
+  // const plot = Plot.rectY(
+  //   { length: 10000 },
+  //   Plot.binX({ y: "count" }, { x: Math.random }),
+  // ).plot();
+  const div = document.querySelector("#myplot");
+  div.append(plot);
+</script>

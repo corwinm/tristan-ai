@@ -1,15 +1,24 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
-    "init": "deno install --global --allow-net --allow-env --name tristan ./main.ts"
+    "dev": "deno run --watch main.ts",
+    "init": "deno install --global -A --name tristan ./main.ts"
   },
   "imports": {
+    "@denosaurs/wait": "jsr:@denosaurs/wait@^0.2.2",
+    "@inquirer/prompts": "npm:@inquirer/prompts@^7.0.0",
+    "@keckelt/tsne": "npm:@keckelt/tsne@^1.0.2",
     "@std/assert": "jsr:@std/assert@1",
     "@std/cli": "jsr:@std/cli@^1.0.6",
+    "@std/path": "jsr:@std/path@^1.0.6",
+    "@types/plotly.js": "npm:@types/plotly.js@^2.33.4",
     "chalk": "npm:chalk@^5.3.0",
     "commander": "npm:commander@^12.1.0",
     "figlet": "npm:figlet@^1.8.0",
     "inquirer": "npm:inquirer@^12.0.0",
-    "openai": "npm:openai@^4.68.1"
+    "nodejs-polars": "npm:nodejs-polars@^0.16.0",
+    "open": "npm:open@^10.1.0",
+    "openai": "npm:openai@^4.68.1",
+    "plotly.js-dist": "npm:plotly.js-dist@^2.35.2",
+    "tiktoken": "npm:tiktoken@^1.0.17"
   }
 }

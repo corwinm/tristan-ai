@@ -1,16 +1,37 @@
 {
   "version": "4",
   "specifiers": {
+    "jsr:@denosaurs/tty@~0.2.1": "0.2.1",
+    "jsr:@denosaurs/wait@~0.2.2": "0.2.2",
     "jsr:@std/assert@1": "1.0.6",
     "jsr:@std/cli@^1.0.6": "1.0.6",
+    "jsr:@std/fmt@1": "1.0.2",
     "jsr:@std/internal@^1.0.4": "1.0.4",
+    "jsr:@std/path@^1.0.6": "1.0.6",
+    "npm:@inquirer/prompts@7": "7.0.0",
+    "npm:@keckelt/tsne@^1.0.2": "1.0.2",
+    "npm:@types/plotly.js@^2.33.4": "2.33.4",
     "npm:chalk@^5.3.0": "5.3.0",
     "npm:commander@^12.1.0": "12.1.0",
     "npm:figlet@^1.8.0": "1.8.0",
     "npm:inquirer@12": "12.0.0",
-    "npm:openai@^4.68.1": "4.68.1"
+    "npm:nodejs-polars@0.16": "0.16.0",
+    "npm:open@^10.1.0": "10.1.0",
+    "npm:openai@^4.68.1": "4.68.1",
+    "npm:plotly.js-dist@^2.35.2": "2.35.2",
+    "npm:tiktoken@^1.0.17": "1.0.17"
   },
   "jsr": {
+    "@denosaurs/tty@0.2.1": {
+      "integrity": "f1fc651cc9021c90bf230a45c6eb893c26a54fae6a855e9cd26aad0083d772dd"
+    },
+    "@denosaurs/wait@0.2.2": {
+      "integrity": "5ec0a7e72c57a96c9fdb2f4a52e2ce3b1ad010acc59fefe6f88054a9e27bc33d",
+      "dependencies": [
+        "jsr:@denosaurs/tty",
+        "jsr:@std/fmt"
+      ]
+    },
     "@std/assert@1.0.6": {
       "integrity": "1904c05806a25d94fe791d6d883b685c9e2dcd60e4f9fc30f4fc5cf010c72207",
       "dependencies": [
@@ -20,8 +41,14 @@
     "@std/cli@1.0.6": {
       "integrity": "d22d8b38c66c666d7ad1f2a66c5b122da1704f985d3c47f01129f05abb6c5d3d"
     },
+    "@std/fmt@1.0.2": {
+      "integrity": "87e9dfcdd3ca7c066e0c3c657c1f987c82888eb8103a3a3baa62684ffeb0f7a7"
+    },
     "@std/internal@1.0.4": {
       "integrity": "62e8e4911527e5e4f307741a795c0b0a9e6958d0b3790716ae71ce085f755422"
+    },
+    "@std/path@1.0.6": {
+      "integrity": "ab2c55f902b380cf28e0eec501b4906e4c1960d13f00e11cfbcd21de15f18fed"
     }
   },
   "npm": {
@@ -145,6 +172,9 @@
         "@types/node@22.7.6"
       ]
     },
+    "@keckelt/tsne@1.0.2": {
+      "integrity": "sha512-OfkxFk5HgUhpzJbxVLkbvtJHkFO1kuI4iRyhipyeqMoK0Tayclj1eLwIaCacC81KBT27yX53J/hqMV90plRRLw=="
+    },
     "@types/node-fetch@2.6.11": {
       "integrity": "sha512-24xFj9R5+rfQJLRyM56qh+wnVSYhyXC2tkoBndtY0U+vubqNsYXGjufB2nn8Q6gt0LrARwL6UBtMCSVCwl4B1g==",
       "dependencies": [
@@ -169,6 +199,9 @@
       "dependencies": [
         "undici-types@6.19.8"
       ]
+    },
+    "@types/plotly.js@2.33.4": {
+      "integrity": "sha512-BzAbsJTiUQyALkkYx1D31YZ9YvcU2ag3LlE/iePMo19eDPvM30cbM2EFNIcu31n39EhXj/9G7800XLA8/rfApA=="
     },
     "abort-controller@3.0.0": {
       "integrity": "sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==",
@@ -200,6 +233,12 @@
     "asynckit@0.4.0": {
       "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
     },
+    "bundle-name@4.1.0": {
+      "integrity": "sha512-tjwM5exMg6BGRI+kNmTntNsvdZS1X8BFYS6tnJ2hdH0kVxM6/eVZ2xy+FqStSWvYmtfFMDLIxurorHwDKfDz5Q==",
+      "dependencies": [
+        "run-applescript"
+      ]
+    },
     "chalk@5.3.0": {
       "integrity": "sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w=="
     },
@@ -226,6 +265,19 @@
     },
     "commander@12.1.0": {
       "integrity": "sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA=="
+    },
+    "default-browser-id@5.0.0": {
+      "integrity": "sha512-A6p/pu/6fyBcA1TRz/GqWYPViplrftcW2gZC9q79ngNCKAeR/X3gcEdXQHl4KNXV+3wgIJ1CPkJQ3IHM6lcsyA=="
+    },
+    "default-browser@5.2.1": {
+      "integrity": "sha512-WY/3TUME0x3KPYdRRxEJJvXRHV4PyPoUsxtZa78lwItwRQRHhd2U9xOscaT/YTf8uCXIAjeJOFBVEh/7FtD8Xg==",
+      "dependencies": [
+        "bundle-name",
+        "default-browser-id"
+      ]
+    },
+    "define-lazy-prop@3.0.0": {
+      "integrity": "sha512-N+MeXYoqr3pOgn8xfyRPREN7gHakLYjhsHhWGT3fWAiL4IkAt0iDw14QiiEm2bE30c5XX5q0FtAA3CK5f9/BUg=="
     },
     "delayed-stream@1.0.0": {
       "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
@@ -289,8 +341,23 @@
         "rxjs"
       ]
     },
+    "is-docker@3.0.0": {
+      "integrity": "sha512-eljcgEDlEns/7AXFosB5K/2nCM4P7FQPkGc/DWLy5rmFEWvZayGrik1d9/QIY5nJ4f9YsVvBkA6kJpHn9rISdQ=="
+    },
     "is-fullwidth-code-point@3.0.0": {
       "integrity": "sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg=="
+    },
+    "is-inside-container@1.0.0": {
+      "integrity": "sha512-KIYLCCJghfHZxqjYBE7rEy0OBuTd5xCHS7tHVgvCLkx7StIoaxwNW3hCALgEUjFfeRk+MG/Qxmp/vtETEF3tRA==",
+      "dependencies": [
+        "is-docker"
+      ]
+    },
+    "is-wsl@3.1.0": {
+      "integrity": "sha512-UcVfVfaK4Sc4m7X3dUSoHoozQGBEFeDC+zVo06t98xe8CzHSZZBekNXH+tu0NalHolcJ/QAGqS46Hef7QXBIMw==",
+      "dependencies": [
+        "is-inside-container"
+      ]
     },
     "mime-db@1.52.0": {
       "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
@@ -316,6 +383,52 @@
         "whatwg-url"
       ]
     },
+    "nodejs-polars-android-arm64@0.16.0": {
+      "integrity": "sha512-+zM3nKoFgmXxK+XpUSDnUZtaoDlXcsaF6MAaREinNlR6Ay1g6jIc+NxzYli2mtMji6RTsXDpmiFdcdOFWzcclA=="
+    },
+    "nodejs-polars-darwin-arm64@0.16.0": {
+      "integrity": "sha512-DQrOtwtEuvP0lxZn21CQ/flTJKHRHcXrtgSqxudCbXVd5KZha1GnmpSNq/jP3kUdUdiYvgnwYgeqFn4djBWwnA=="
+    },
+    "nodejs-polars-darwin-x64@0.16.0": {
+      "integrity": "sha512-TOTmojbR7Pog2uvjgkqglWgVIVOV1RcV3/V01DPYDBhGrvtNtlVRlQ1oo00V7UwkQe0G9Ph8c4LfAtJy/fYHNg=="
+    },
+    "nodejs-polars-linux-arm64-gnu@0.16.0": {
+      "integrity": "sha512-4gFmXi2oD6aTxDruHooa10qpKt9bmZoRj14hajs2+cFw3KaYXZ2FE690Br+BJqTrh1yY/6A3MQWz7QAyRFNUng=="
+    },
+    "nodejs-polars-linux-arm64-musl@0.16.0": {
+      "integrity": "sha512-RweGvcPSK7hOy8HV1qHIaT+sVEEfZ62WUxIz2muXCzw8tm3FizmzCunZQyHsy+PVCHM5YqYG2mf6Vaa5i8HZqQ=="
+    },
+    "nodejs-polars-linux-x64-gnu@0.16.0": {
+      "integrity": "sha512-R6B0NfQmujAcT3BJKW5BnEootKa1lugbE0E5f4DAUFS9NO1+Qx4gXyZ2If0EULVkddspCPglGvGUnXt4Bc2Lqg=="
+    },
+    "nodejs-polars-linux-x64-musl@0.16.0": {
+      "integrity": "sha512-lqUH2dTFfFxN3UDVE92KhIIGV5P5UDS+ye8RAw021AQAH0Sd0g4Zk9sY0Am+eFyWG3MWRYwul7siVDlSq6d3yQ=="
+    },
+    "nodejs-polars-win32-x64-msvc@0.16.0": {
+      "integrity": "sha512-r3ZIk3hAaDHThGQU8Syw1hIjcp6GySjyLT3htuG6eFlky99m/kHAH3qlFfYrTv+WDgbOIOsy1gqUr/LwyqR7Ew=="
+    },
+    "nodejs-polars@0.16.0": {
+      "integrity": "sha512-GNISTlEg0Wv2CxOkzbum2McABkgQLa3z7IjjfB61Wrv6Rszm12CcsQyiQVqJweDK1l9/O7uDc/qu9Hd3eCKaJg==",
+      "dependencies": [
+        "nodejs-polars-android-arm64",
+        "nodejs-polars-darwin-arm64",
+        "nodejs-polars-darwin-x64",
+        "nodejs-polars-linux-arm64-gnu",
+        "nodejs-polars-linux-arm64-musl",
+        "nodejs-polars-linux-x64-gnu",
+        "nodejs-polars-linux-x64-musl",
+        "nodejs-polars-win32-x64-msvc"
+      ]
+    },
+    "open@10.1.0": {
+      "integrity": "sha512-mnkeQ1qP5Ue2wd+aivTD3NHd/lZ96Lu0jgf0pwktLPtx6cTZiH7tyeGRRHs0zX0rbrahXPnXlUnbeXyaBBuIaw==",
+      "dependencies": [
+        "default-browser",
+        "define-lazy-prop",
+        "is-inside-container",
+        "is-wsl"
+      ]
+    },
     "openai@4.68.1": {
       "integrity": "sha512-C9XmYRHgra1U1G4GGFNqRHQEjxhoOWbQYR85IibfJ0jpHUhOm4/lARiKaC/h3zThvikwH9Dx/XOKWPNVygIS3g==",
       "dependencies": [
@@ -330,6 +443,12 @@
     },
     "os-tmpdir@1.0.2": {
       "integrity": "sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g=="
+    },
+    "plotly.js-dist@2.35.2": {
+      "integrity": "sha512-zbKfz7jXGcLGoyPJxjGrKLttPiqvsEjIMHON/dEU/mnOJ+/yYoEctEEQ3qp5zQmvoovw1L47kCsQpq/GTbejBA=="
+    },
+    "run-applescript@7.0.0": {
+      "integrity": "sha512-9by4Ij99JUr/MCFBUkDKLWK3G9HVXmabKz9U5MlIAIuvuzkiOicRYs8XJLxX+xahD+mLiiCYDqF9dKAgtzKP1A=="
     },
     "run-async@3.0.0": {
       "integrity": "sha512-540WwVDOMxA6dN6We19EcT9sc3hkXPw5mzRNGM3FkdN/vtE9NFvj5lFAPNwUDmJjXidm3v7TC1cTE7t17Ulm1Q=="
@@ -359,6 +478,9 @@
       "dependencies": [
         "ansi-regex"
       ]
+    },
+    "tiktoken@1.0.17": {
+      "integrity": "sha512-UuFHqpy/DxOfNiC3otsqbx3oS6jr5uKdQhB/CvDEroZQbVHt+qAK+4JbIooabUWKU9g6PpsFylNu9Wcg4MxSGA=="
     },
     "tmp@0.0.33": {
       "integrity": "sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==",
@@ -408,13 +530,22 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@denosaurs/wait@~0.2.2",
       "jsr:@std/assert@1",
       "jsr:@std/cli@^1.0.6",
+      "jsr:@std/path@^1.0.6",
+      "npm:@inquirer/prompts@7",
+      "npm:@keckelt/tsne@^1.0.2",
+      "npm:@types/plotly.js@^2.33.4",
       "npm:chalk@^5.3.0",
       "npm:commander@^12.1.0",
       "npm:figlet@^1.8.0",
       "npm:inquirer@12",
-      "npm:openai@^4.68.1"
+      "npm:nodejs-polars@0.16",
+      "npm:open@^10.1.0",
+      "npm:openai@^4.68.1",
+      "npm:plotly.js-dist@^2.35.2",
+      "npm:tiktoken@^1.0.17"
     ]
   }
 }
