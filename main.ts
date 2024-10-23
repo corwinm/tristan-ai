@@ -1,6 +1,6 @@
 import { Command } from "npm:commander";
 import { haikuAction } from "./tristan/actions/haiku.ts";
-import { embeddingsAction } from "./tristan/actions/embeddings.ts";
+import { embeddingsAction } from "./tristan/actions/embeddings/embeddingsAction.ts";
 import { logo } from "./tristan/logo.ts";
 import chalk from "npm:chalk";
 
