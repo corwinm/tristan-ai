@@ -6,7 +6,7 @@ import { defaultEmbeddingsPath } from "./defaultDataPath.ts";
 export function visualizingEmbeddings2D() {
   const loadViz = confirm("Do you want to generate the data visualization?");
   if (!loadViz) {
-    console.log(chalk.green("Skipping data visualization"));
+    console.log(chalk.green("Skipping data visualization."));
     return;
   }
 
