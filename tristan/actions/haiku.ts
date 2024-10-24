@@ -1,11 +1,21 @@
 import OpenAI from "npm:openai";
+import chalk from "npm:chalk";
 
-export async function haikuAction(topic: string = "recursion in programming") {
+export async function haikuAction(topic?: string) {
   const apiKey = Deno.env.get("OPENAI_API_KEY");
 
   const openai = new OpenAI({
     apiKey,
   });
+
+  if (!topic) {
+    const userInput = prompt("Haiku topic?", "recursion in programming");
+    if (!userInput) {
+      console.log(chalk.red("No topic! No haiku!"));
+      return;
+    }
+    topic = userInput;
+  }
 
   try {
     const completion = await openai.chat.completions.create({

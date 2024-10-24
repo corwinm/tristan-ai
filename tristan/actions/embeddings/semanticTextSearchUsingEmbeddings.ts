@@ -25,6 +25,7 @@ export async function semanticTextSearchUsingEmbeddings(openai: OpenAI) {
     "delicious beans",
   );
   if (!productDescription) {
+    console.log(chalk.green("Skipping search product description"));
     return;
   }
   const spinner = wait("Generating Embedding...").start();

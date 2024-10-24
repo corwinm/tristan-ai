@@ -38,6 +38,12 @@ function findCludtersUsingKMeans(df: DataFrame) {
 }
 
 export async function kMeansClustering(openai: OpenAI) {
+  const generateSummaryOfClusters = confirm("Generate summary of clusters?");
+  if (!generateSummaryOfClusters) {
+    console.log(chalk.green("Skipping summary of clusters."));
+    return;
+  }
+
   const data = pl.readCSV(defaultEmbeddingsPath, { quoteChar: '"' });
 
   const matrix: number[][] = data
@@ -53,19 +59,11 @@ export async function kMeansClustering(openai: OpenAI) {
 
   const dfWithClusters = findCludtersUsingKMeans(dataWithParsedEmbeddings);
 
-  const generateSummaryOfClusters = confirm("Generate summary of clusters?");
-  if (!generateSummaryOfClusters) {
-    console.log(chalk.blue("Skipping summary of clusters."));
-    return;
-  }
-
   const rev_per_cluster = 5;
 
   const dfdf = dfWithClusters;
 
   for (let i = 0; i < clusters; i++) {
-    console.log(`Cluster ${i} Theme:`, " ");
-
     const clusterData = dfdf.filter(pl.col("Cluster").eq(i));
     const reviews = clusterData
       .getColumn("combined")
@@ -93,6 +91,7 @@ export async function kMeansClustering(openai: OpenAI) {
     });
     spinner.stop();
 
+    console.log(`Cluster ${i} Theme:`, " ");
     console.log(response.choices[0]?.message?.content?.replace("\n", ""));
 
     const sample_cluster_rows = clusterData.sample({

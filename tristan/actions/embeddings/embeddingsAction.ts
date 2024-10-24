@@ -13,9 +13,9 @@ export async function embeddingsAction() {
 
   await obtainDataSet(openai);
 
-  visualizingEmbeddings2D();
+  await visualizingEmbeddings2D();
 
-  semanticTextSearchUsingEmbeddings(openai);
+  await semanticTextSearchUsingEmbeddings(openai);
 
   await kMeansClustering(openai);
 }

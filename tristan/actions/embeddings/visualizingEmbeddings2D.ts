@@ -3,7 +3,7 @@ import { wait } from "jsr:@denosaurs/wait";
 import open from "npm:open";
 import { defaultEmbeddingsPath } from "./defaultDataPath.ts";
 
-export function visualizingEmbeddings2D() {
+export async function visualizingEmbeddings2D() {
   const loadViz = confirm("Do you want to generate the data visualization?");
   if (!loadViz) {
     console.log(chalk.green("Skipping data visualization."));
@@ -16,6 +16,11 @@ export function visualizingEmbeddings2D() {
     new URL("./embedding-vis-worker.ts", import.meta.url).href,
     { type: "module" },
   );
+
+  let done: VoidFunction;
+  const workerDonePromise = new Promise<void>((resolve) => {
+    done = resolve;
+  });
   worker.onmessage = async (event) => {
     if (event.data?.data) {
       spinner.text = event.data.data;
@@ -24,7 +29,9 @@ export function visualizingEmbeddings2D() {
       await open(event.data.url, { app: { name: "browser" } });
 
       spinner.stop();
+      done();
     }
   };
   worker.postMessage({ filename: defaultEmbeddingsPath });
+  await workerDonePromise;
 }
