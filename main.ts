@@ -3,6 +3,7 @@ import { haikuAction } from "./tristan/actions/haiku.ts";
 import { embeddingsAction } from "./tristan/actions/embeddings/embeddingsAction.ts";
 import { logo } from "./tristan/logo.ts";
 import chalk from "npm:chalk";
+import { crawlerAction } from "./tristan/actions/crawler/crawlerAction.ts";
 
 const program = new Command()
   .version("1.0.0")
@@ -28,6 +29,12 @@ program
   .command("embeddings")
   .description("Generate and use embeddings")
   .action(embeddingsAction);
+
+program
+  .command("crawl")
+  .description("Crawl website and generate csv data")
+  .option("-v, --verbose", "Enable verbose output")
+  .action(crawlerAction);
 
 if (import.meta.main) {
   program.parse();
