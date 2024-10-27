@@ -6,7 +6,7 @@ import chalk from "npm:chalk";
 
 const program = new Command()
   .version("1.0.0")
-  .name("tristan-ai")
+  .name("tristan")
   .description(
     [
       logo,
