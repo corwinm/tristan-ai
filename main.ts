@@ -4,6 +4,7 @@ import { embeddingsAction } from "./tristan/actions/embeddings/embeddingsAction.
 import { logo } from "./tristan/logo.ts";
 import chalk from "npm:chalk";
 import { crawlerAction } from "./tristan/actions/crawler/crawlerAction.ts";
+import { trainingAction } from "./tristan/actions/training/trainingAction.ts";
 
 const program = new Command()
   .version("1.0.0")
@@ -35,6 +36,18 @@ program
   .description("Crawl website and generate csv data")
   .option("-v, --verbose", "Enable verbose output")
   .action(crawlerAction);
+
+program
+  .command("train")
+  .description(
+    "Use crawling data to generate embeddings for RAG or a Fine Tuned model",
+  )
+  .option("-v, --verbose", "Enable verbose output")
+  .option(
+    "-f, --file <fileName>",
+    "Override source file name. e.g. my_data.csv or just my_data",
+  )
+  .action(trainingAction);
 
 if (import.meta.main) {
   program.parse();

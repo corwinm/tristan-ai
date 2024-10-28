@@ -5,6 +5,7 @@ import chalk from "npm:chalk";
 import { cosineSimilarity } from "../../utilities/cosineSimilarity.ts";
 import { getEmbedding } from "./getEmbedding.ts";
 import { defaultEmbeddingsPath } from "./defaultDataPath.ts";
+import { input } from "npm:@inquirer/prompts";
 
 export async function semanticTextSearchUsingEmbeddings(openai: OpenAI) {
   const data = pl.readCSV(defaultEmbeddingsPath, { quoteChar: '"' });
@@ -20,10 +21,10 @@ export async function semanticTextSearchUsingEmbeddings(openai: OpenAI) {
     pl.Series(matrix).alias("embedding"),
   );
 
-  const productDescription = prompt(
-    "Search product description:",
-    "delicious beans",
-  );
+  const productDescription = await input({
+    message: "Search product description:",
+    default: "delicious beans",
+  });
   if (!productDescription) {
     console.log(chalk.green("Skipping search product description"));
     return;

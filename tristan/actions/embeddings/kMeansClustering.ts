@@ -3,6 +3,7 @@ import pl, { DataFrame } from "npm:nodejs-polars";
 import { wait } from "jsr:@denosaurs/wait";
 import chalk from "npm:chalk";
 import { kmeans } from "npm:ml-kmeans";
+import { confirm } from "npm:@inquirer/prompts";
 import { defaultEmbeddingsPath } from "./defaultDataPath.ts";
 
 const clusters = 4;
@@ -38,7 +39,9 @@ function findCludtersUsingKMeans(df: DataFrame) {
 }
 
 export async function kMeansClustering(openai: OpenAI) {
-  const generateSummaryOfClusters = confirm("Generate summary of clusters?");
+  const generateSummaryOfClusters = await confirm({
+    message: "Generate summary of clusters?",
+  });
   if (!generateSummaryOfClusters) {
     console.log(chalk.green("Skipping summary of clusters."));
     return;

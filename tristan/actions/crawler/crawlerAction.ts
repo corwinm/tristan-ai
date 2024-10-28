@@ -2,6 +2,7 @@ import Crawler from "npm:crawler";
 import chalk from "npm:chalk";
 import { stringify } from "jsr:@std/csv";
 import { resolve } from "jsr:@std/path";
+import { input } from "npm:@inquirer/prompts";
 
 const outputPathPrefix = "./tristan/output/";
 
@@ -50,10 +51,11 @@ function createProfileCrawler() {
 
 export async function crawlerAction({ verbose }: { verbose: boolean }) {
   const { crawlProfile, crawlPost } = createProfileCrawler();
-  const blogProfile = prompt(
-    "What profile should I look at?",
-    "https://medium.com/slalom-build",
-  );
+
+  const blogProfile = await input({
+    message: "What profile should I look at?",
+    default: "https://medium.com/slalom-build",
+  });
   if (!blogProfile) {
     console.log(chalk.red("Oh ok, maybe next time..."));
     return;
@@ -62,14 +64,14 @@ export async function crawlerAction({ verbose }: { verbose: boolean }) {
   const result = await crawlProfile(blogProfile);
   if (verbose) console.log({ result });
 
-  const postResult = await crawlPost(result.at(0));
-  if (verbose) console.log({ postResult });
+  const postResults = await Promise.all(result.map((post) => crawlPost(post)));
+  if (verbose) console.log({ postResults });
 
-  const postResults = [postResult];
-  const outputName = prompt(
-    "What should I name the output csv? You can use this later for training!",
-    "blog_data",
-  );
+  const outputName = await input({
+    message:
+      "What should I name the output csv? You can use this later for training!",
+    default: "blog_data",
+  });
   if (!outputName) {
     console.log(
       chalk.red("Oh ok. I guess it was fun to look at all those posts anyway!"),

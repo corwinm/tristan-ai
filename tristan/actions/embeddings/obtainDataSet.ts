@@ -10,6 +10,7 @@ import pl, { DataFrame } from "npm:nodejs-polars";
 import tiktoken from "npm:tiktoken";
 import { getEmbedding } from "./getEmbedding.ts";
 import type OpenAI from "openai";
+import { confirm } from "npm:@inquirer/prompts";
 
 export function loadAndInspectDataset() {
   const inputDatapath = resolve(defaultDataPath); // to save space, we provide a pre-filtered dataset
@@ -99,9 +100,9 @@ export async function obtainDataSet(openai: OpenAI) {
   const hasDataSet = dataSetExists();
   if (hasDataSet) {
     console.log(chalk.green("Existing data set with embeddings found."));
-    const regenerateEmbeddings = confirm(
-      "Do you want to regenerate the embeddings?",
-    );
+    const regenerateEmbeddings = await confirm({
+      message: "Do you want to regenerate the embeddings?",
+    });
     if (!regenerateEmbeddings) {
       console.log(chalk.blue("Using existing embeddings."));
       return;

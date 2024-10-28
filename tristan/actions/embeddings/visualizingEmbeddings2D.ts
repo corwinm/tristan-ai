@@ -1,10 +1,13 @@
 import chalk from "npm:chalk";
 import { wait } from "jsr:@denosaurs/wait";
 import open from "npm:open";
+import { confirm } from "npm:@inquirer/prompts";
 import { defaultEmbeddingsPath } from "./defaultDataPath.ts";
 
 export async function visualizingEmbeddings2D() {
-  const loadViz = confirm("Do you want to generate the data visualization?");
+  const loadViz = await confirm({
+    message: "Do you want to generate the data visualization?",
+  });
   if (!loadViz) {
     console.log(chalk.green("Skipping data visualization."));
     return;

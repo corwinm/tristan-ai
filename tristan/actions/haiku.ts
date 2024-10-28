@@ -1,5 +1,6 @@
 import OpenAI from "npm:openai";
 import chalk from "npm:chalk";
+import { input } from "npm:@inquirer/prompts";
 
 export async function haikuAction(topic?: string) {
   const apiKey = Deno.env.get("OPENAI_API_KEY");
@@ -9,7 +10,10 @@ export async function haikuAction(topic?: string) {
   });
 
   if (!topic) {
-    const userInput = prompt("Haiku topic?", "recursion in programming");
+    const userInput = await input({
+      message: "Haiku topic?",
+      default: "recursion in programming",
+    });
     if (!userInput) {
       console.log(chalk.red("No topic! No haiku!"));
       return;
