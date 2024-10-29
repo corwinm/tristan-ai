@@ -5,6 +5,7 @@ import { logo } from "./tristan/logo.ts";
 import chalk from "npm:chalk";
 import { crawlerAction } from "./tristan/actions/crawler/crawlerAction.ts";
 import { trainingAction } from "./tristan/actions/training/trainingAction.ts";
+import { blogAction } from "./tristan/actions/blog/blogAction.ts";
 
 const program = new Command()
   .version("1.0.0")
@@ -48,6 +49,16 @@ program
     "Override source file name. e.g. my_data.csv or just my_data",
   )
   .action(trainingAction);
+
+program
+  .command("blog")
+  .description("Use prepared training data to generate blog posts using RAG.")
+  .option("-v, --verbose", "Enable verbose output")
+  .option(
+    "-f, --file <fileName>",
+    "Override source file name. e.g. my_data.csv or just my_data",
+  )
+  .action(blogAction);
 
 if (import.meta.main) {
   program.parse();

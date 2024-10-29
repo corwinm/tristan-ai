@@ -7,9 +7,8 @@ import tiktoken from "npm:tiktoken";
 import { embeddingEncoding } from "../embeddings/defaultDataPath.ts";
 import { wait } from "jsr:@denosaurs/wait";
 import chalk from "npm:chalk";
-
-const defaultOutputPath = "./tristan/output";
-const defaultDataFileName = "blog_data";
+import { defaultDataFileName } from "./defaultDataFileName.ts";
+import { defaultOutputPath } from "./defaultOutputPath.ts";
 
 export function loadAndInspectDataset(dataPath: string, verbose: boolean) {
   const inputDatapath = resolve(dataPath);
